@@ -1,6 +1,6 @@
 let userId = 0;
 
-const QuantityOfComments = 30;
+const quantityOfComments = 30;
 
 const maxIdPublishedPhotos = 25;
 
@@ -14,7 +14,7 @@ const likes = {
   max: 200
 };
 
-const UniqueNumberComment = {
+const uniqueNumberComment = {
   min: 1,
   max: 99
 };
@@ -69,8 +69,8 @@ const generationId = (a, b) => {
   };
 };
 
-const arrayGenerationId = generationId (UniqueNumberComment.min, UniqueNumberComment.max);
-const arrayGenerationComment = generationId(0, QuantityOfComments);
+const arrayGenerationId = generationId (uniqueNumberComment.min, uniqueNumberComment.max);
+const arrayGenerationComment = generationId(0, quantityOfComments);
 
 const createComment = () => ({
   id: arrayGenerationId(),
