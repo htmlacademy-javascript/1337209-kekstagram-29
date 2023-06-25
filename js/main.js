@@ -39,7 +39,7 @@ const descriptionPhoto = [
 
 const nameAuthorComment = ['Сергей', 'Роман', 'Виктория', 'Любовь', 'Анатолий', 'Александр'];
 
-// Поиска целого случайного элемента
+// Поиск случайного элемента
 
 function getRandomNumber(a, b) {
   const minValues = Math.ceil(Math.min(a, b));
@@ -71,6 +71,8 @@ const generationId = (a, b) => {
 
 const arrayGenerationId = generationId (uniqueNumberComment.min, uniqueNumberComment.max);
 const arrayGenerationComment = generationId(0, quantityOfComments);
+
+// Функция описания комментария
 
 const createComment = () => ({
   id: arrayGenerationId(),
