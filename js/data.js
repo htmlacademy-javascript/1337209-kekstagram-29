@@ -6,7 +6,7 @@ let userId = 0;
 
 const QUANTITY_COMMENTS = 30;
 
-const MAX_ID_PHOTOS = 35;
+const MAX_ID_PHOTOS = 25;
 
 const QUANTITY_AVATARS = {
   min: 1,
