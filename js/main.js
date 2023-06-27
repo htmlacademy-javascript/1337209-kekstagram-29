@@ -1,25 +1,25 @@
 let userId = 0;
 
-const quantityOfComments = 30;
+const QUANTITY_COMMENTS = 30;
 
-const maxIdPublishedPhotos = 25;
+const MAX_ID_PHOTOS = 25;
 
-const avatarNumb = {
+const QUANTITY_AVATARS = {
   min: 1,
   max: 6
 };
 
-const likes = {
+const LIKES = {
   min: 15,
   max: 200
 };
 
-const uniqueNumberComment = {
+const ID_COMMENTS = {
   min: 1,
   max: 99
 };
 
-const messageComment = [
+const MESSAGE_COMMENT = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -28,7 +28,7 @@ const messageComment = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 
-const descriptionPhoto = [
+const DESCRIPTION_PHOTOS = [
   'Сияние разума',
   'Волны',
   'Вольный полёт',
@@ -37,7 +37,7 @@ const descriptionPhoto = [
   'Сонный пир'
 ];
 
-const nameAuthorComment = ['Сергей', 'Роман', 'Виктория', 'Любовь', 'Анатолий', 'Александр'];
+const NAMES = ['Сергей', 'Роман', 'Виктория', 'Любовь', 'Анатолий', 'Александр'];
 
 // Поиск случайного элемента
 
@@ -69,16 +69,16 @@ const generationId = (a, b) => {
   };
 };
 
-const arrayGenerationId = generationId (uniqueNumberComment.min, uniqueNumberComment.max);
-const arrayGenerationComment = generationId(0, quantityOfComments);
+const arrayGenerationId = generationId (ID_COMMENTS.min, ID_COMMENTS.max);
+const arrayGenerationComment = generationId(0, QUANTITY_COMMENTS);
 
 // Функция описания комментария
 
 const createComment = () => ({
   id: arrayGenerationId(),
-  avatar: `img/avatar-${getRandomNumber(avatarNumb.min, avatarNumb.max)}.svg`,
-  name: getRandomArrayElement(nameAuthorComment),
-  message: getRandomArrayElement(messageComment),
+  avatar: `img/avatar-${getRandomNumber(QUANTITY_AVATARS.min, QUANTITY_AVATARS.max)}.svg`,
+  name: getRandomArrayElement(NAMES),
+  message: getRandomArrayElement(MESSAGE_COMMENT)
 });
 
 const arrayComment = () => Array.from({length: getRandomNumber(0, arrayGenerationComment(0))}, createComment);
@@ -90,12 +90,12 @@ const descriptionPublication = () => {
   return {
     id: userId,
     url: `photos/${userId}.jpg`,
-    description: getRandomArrayElement(descriptionPhoto),
-    likes: getRandomNumber(likes.min, likes.max),
+    description: getRandomArrayElement(DESCRIPTION_PHOTOS),
+    likes: getRandomNumber(LIKES.min, LIKES.max),
     comment: arrayComment()
   };
 };
 
-const arrayDescriptionPublication = () => Array.from({length: maxIdPublishedPhotos}, descriptionPublication);
+const arrayDescriptionPublication = () => Array.from({length: MAX_ID_PHOTOS}, descriptionPublication);
 
-arrayDescriptionPublication();
+console.log(arrayDescriptionPublication());
