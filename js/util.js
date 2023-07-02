@@ -11,21 +11,4 @@ function getRandomNumber(a, b) {
 const getRandomArrayElement = (elements) =>
   elements[getRandomNumber(0, elements.length - 1)];
 
-// Генерация уникального случайного элемента массива
-
-const generationId = (a, b) => {
-  const previusValues = [];
-  return function () {
-    let randomId = getRandomNumber(a, b);
-    if(previusValues.length >= (b - a + 1)) {
-      return null;
-    }
-    while(previusValues.includes(randomId)) {
-      randomId = getRandomNumber(a, b);
-    }
-    previusValues.push(randomId);
-    return randomId;
-  };
-};
-
-export {getRandomNumber, generationId, getRandomArrayElement};
+export {getRandomNumber, getRandomArrayElement};
