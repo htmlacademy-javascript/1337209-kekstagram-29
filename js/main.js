@@ -1,5 +1,5 @@
 import './util.js';
-import './popup.js';
+import './miniature.js';
 import {arrayDescriptionPublication} from './data.js';
 
 arrayDescriptionPublication();
