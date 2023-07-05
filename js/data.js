@@ -1,12 +1,7 @@
 import {getRandomNumber} from './util.js';
 import {getRandomArrayElement} from './util.js';
 
-// const USER_ID_MIN = 1;
-// const USER_ID_MAX = 25;
-const userId = {
-  min: 1,
-  max: 25
-};
+const userIdMax = 25;
 
 const QUANTITY_COMMENTS = 30;
 
@@ -63,7 +58,7 @@ const descriptionPublication = () => {
     comment: arrayComment()
   });
 };
-const arrayDescriptionPublication = () => Array.from({length: userId.max}, descriptionPublication);
+const arrayDescriptionPublication = () => Array.from({length: userIdMax}, descriptionPublication);
 export {arrayDescriptionPublication};
 
 
