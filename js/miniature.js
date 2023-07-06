@@ -1,21 +1,19 @@
-// import {arrayDescriptionPublication} from './data.js';
-
-const getPictures = (func) => {
+const getPictures = (arrayPattern) => {
   const pictures = document.querySelector('.pictures');
-  const Template = document.querySelector('#picture').content.querySelector('.picture');
+  const template = document.querySelector('#picture').content.querySelector('.picture');
 
-  const BoxPicturesFragment = document.createDocumentFragment();
+  const boxPicturesFragment = document.createDocumentFragment();
 
-  func.forEach((element) => {
-    const copyTemplate = Template.cloneNode(true);
+  arrayPattern.forEach((element) => {
+    const copyTemplate = template.cloneNode(true);
     copyTemplate.querySelector('.picture__img').alt = element.description;
     copyTemplate.querySelector('.picture__img').src = element.url;
     copyTemplate.querySelector('.picture__comments').textContent = element.comment.length;
     copyTemplate.querySelector('.picture__likes').textContent = element.likes;
-    BoxPicturesFragment.append(copyTemplate);
+    boxPicturesFragment.append(copyTemplate);
   });
 
-  pictures.append(BoxPicturesFragment);
+  pictures.append(boxPicturesFragment);
 };
 
 export {getPictures};

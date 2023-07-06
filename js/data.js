@@ -1,7 +1,7 @@
 import {getRandomNumber} from './util.js';
 import {getRandomArrayElement} from './util.js';
 
-const userIdMax = 25;
+const USER_ID_MAX = 25;
 
 const QUANTITY_COMMENTS = 30;
 
@@ -47,7 +47,7 @@ const createComment = () => ({
 
 // Функция описания публикации пользователя
 let id = 0;
-const descriptionPublication = () => {
+const getPublication = () => {
   const arrayGenerationComment = getRandomNumber(0, QUANTITY_COMMENTS);
   const arrayComment = () => Array.from({length: arrayGenerationComment}, createComment);
   return ({
@@ -58,7 +58,7 @@ const descriptionPublication = () => {
     comment: arrayComment()
   });
 };
-const arrayDescriptionPublication = () => Array.from({length: userIdMax}, descriptionPublication);
-export {arrayDescriptionPublication};
+const getArrayPublications = () => Array.from({length: USER_ID_MAX}, getPublication);
+export {getArrayPublications};
 
 
