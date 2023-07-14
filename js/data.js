@@ -45,20 +45,25 @@ const createComment = () => ({
   message: getRandomArrayElement(MESSAGE_COMMENT)
 });
 
+const getArrayComments = () => Array.from({length: getRandomNumber(1, QUANTITY_COMMENTS)}, createComment);
+const arrComments = getArrayComments();
 // Функция описания публикации пользователя
 let id = 0;
 const getPublication = () => {
-  const arrayGenerationComment = getRandomNumber(0, QUANTITY_COMMENTS);
-  const arrayComment = () => Array.from({length: arrayGenerationComment}, createComment);
-  return ({
+  const arrayComments = getArrayComments();
+  return {
     id: ++id,
     url: `photos/${id}.jpg`,
     description: getRandomArrayElement(DESCRIPTION_PHOTOS),
     likes: getRandomNumber(LIKES.min, LIKES.max),
-    comment: arrayComment()
-  });
+    comments: arrayComments
+  };
 };
 const getArrayPublications = () => Array.from({length: USER_ID_MAX}, getPublication);
-export {getArrayPublications};
+const publications = getArrayPublications();
+export {
+  publications,
+  arrComments
+};
 
 
