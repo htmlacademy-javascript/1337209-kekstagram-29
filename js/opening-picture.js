@@ -29,7 +29,7 @@ function openBigPicture(element) {
   bodyModalOpen.classList.add('modal-open');
 }
 
-document.addEventListener('keypress', (evt) => {
+document.addEventListener('keydown', (evt) => {
   const active = document.activeElement;
   if(active && active.classList.contains('picture') && isEnterKey(evt)) {
     evt.preventDefault();
@@ -44,7 +44,7 @@ const onClickClose = function (evt) {
 };
 
 
-document.addEventListener('keypress', (evt) => {
+document.addEventListener('keydown', (evt) => {
   if(isEscapeKey(evt)) {
     evt.preventDefault();
     bigPicture.classList.add('hidden');
