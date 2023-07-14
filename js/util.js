@@ -11,4 +11,9 @@ function getRandomNumber(a, b) {
 const getRandomArrayElement = (elements) =>
   elements[getRandomNumber(0, elements.length - 1)];
 
-export {getRandomNumber, getRandomArrayElement};
+// Переменные для проверки условий в обработчиках(открытия, закрытия)
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterKey = (evt) => evt.key === 'Enter';
+
+export {getRandomNumber, getRandomArrayElement, isEscapeKey, isEnterKey};
