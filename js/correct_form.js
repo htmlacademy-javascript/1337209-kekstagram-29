@@ -80,10 +80,10 @@ const getPreview = (file, fn) => new Promise((resolve) => {
   reader.readAsDataURL(file);
 });
 
-
 imgUploadInput.addEventListener('change', (evt) => {
   evt.preventDefault();
   imgUploadOverlay.classList.remove('hidden');
+  // вернуть
   getPreview(imgUploadInput.files[0], (url) => {
     imgUploadPreview.querySelector('img:not([class])').src = url;
     effectsPreview.forEach((element) => {

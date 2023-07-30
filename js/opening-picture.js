@@ -12,15 +12,16 @@ const STEP_COMMENT = 5;
 let currentComments;
 let currentCommentsCounter = 0;
 
-function dataLoad (item) {
+const loadingData = (item) => {
   renderComments(item.comments.slice(0, STEP_COMMENT));
   currentComments = item.comments;
   currentCommentsCounter = STEP_COMMENT;
   if(currentComments.length <= currentCommentsCounter) {
     currentCommentsCounter = currentComments.length;
     commentsLoader.classList.add('hidden');
-  } socialCommentCount.innerHTML = `${currentCommentsCounter} из ${currentComments.length} комментариев`;
-}
+  }
+  socialCommentCount.innerHTML = `${currentCommentsCounter} из ${currentComments.length} комментариев`;
+};
 
 commentsLoader.addEventListener('click', () => {
   if(currentComments.length > currentCommentsCounter) {
@@ -38,7 +39,7 @@ commentsLoader.addEventListener('click', () => {
 });
 
 
-function openBigPicture(element) {
+const openBigPicture = (element) => {
   if(!bigPicture.classList.contains('hidden')){
     return;
   }
@@ -46,10 +47,10 @@ function openBigPicture(element) {
   const item = publications.find(({ id }) => id === parseInt(pictureId, 10));
   renderPicture(item);
   commentsLoader.classList.remove('hidden');
-  dataLoad(item);
+  loadingData(item);
   bigPicture.classList.remove('hidden');
   bodyModalOpen.classList.add('modal-open');
-}
+};
 
 document.addEventListener('keydown', (evt) => {
   const active = document.activeElement;
@@ -60,12 +61,12 @@ document.addEventListener('keydown', (evt) => {
   }
 });
 
-function onClickOpen (evt) {
+const onClickOpen = (evt) => {
   const picture = evt.target.closest('.picture');
   if (picture) {
     openBigPicture(picture);
   }
-}
+};
 
 const onClickClose = function (evt) {
   evt.preventDefault();
@@ -81,5 +82,3 @@ document.addEventListener('keydown', (evt) => {
 
 pictures.addEventListener('click', onClickOpen);
 closeButtonPicture.addEventListener('click', onClickClose);
-
-
