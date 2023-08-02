@@ -20,27 +20,35 @@ const pristine = new Pristine(imgUploadForm, {
 
 function checkCount (value) {
   const v = value.trim();
-  return !v || v.split(' ').length < 6;
+  const newArray = v.split(' ').filter(Boolean);
+  return !newArray || newArray.length < 6;
 }
 function checkGrid (value) {
   const v = value.trim();
-  return !v || v.split(' ').every((tag) => tag.startsWith('#'));
+  const newArray = v.split(' ').filter(Boolean);
+  return !newArray || newArray.every((tag) => tag.startsWith('#'));
 }
 
 function checkLength (value) {
   const v = value.trim();
-  return !v || v.split(' ').every((tag) => tag.length >= 2 && tag.length <= 20);
+  const newArray = v.split(' ').filter(Boolean);
+
+  return !newArray || newArray.every((tag) => tag.length >= 2 && tag.length <= 20);
 }
 
 function checkSymbols(value) {
   const v = value.trim().toLowerCase();
-  return !v || v.split(' ').every((tag) => /^#[a-zа-яё0-9]+$/.test(tag));
+  const newArray = v.split(' ').filter(Boolean);
+
+  return !newArray || newArray.every((tag) => /^#[a-zа-яё0-9]+$/.test(tag));
 }
 
 function checkRepeats(value) {
   const v = value.trim().toLowerCase();
-  const l = v.split(' ');
-  return !v || !l.some((tag, i) => (i < l.length - 1) && l.slice(i + 1).includes(tag));
+  const newArray = v.split(' ').filter(Boolean);
+  const l = newArray;
+
+  return !newArray || !l.some((tag, i) => (i < l.length - 1) && l.slice(i + 1).includes(tag));
 }
 
 function checkMessageLength(value) {
@@ -83,7 +91,6 @@ const getPreview = (file, fn) => new Promise((resolve) => {
 imgUploadInput.addEventListener('change', (evt) => {
   evt.preventDefault();
   imgUploadOverlay.classList.remove('hidden');
-  // вернуть
   getPreview(imgUploadInput.files[0], (url) => {
     imgUploadPreview.querySelector('img:not([class])').src = url;
     effectsPreview.forEach((element) => {
