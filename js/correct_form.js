@@ -100,7 +100,6 @@ imgUploadInput.addEventListener('change', (evt) => {
   });
 });
 
-
 const isEscapeImg = (evt) => evt.key === 'Escape';
 
 document.addEventListener('keydown', (evt) => {
